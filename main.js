@@ -16,10 +16,10 @@
 
 
   // HTMLのid値がセットされているDOMを取得する
-const questionElement = document.getElementById('question');
-const answerContainer = document.getElementById('answers');
-const resultElement = document.getElementById('result');
-const restartButton = document.getElementById('restart-button');
+  const questionElement = document.getElementById('question');
+  const answerContainer = document.getElementById('answers');
+  const resultElement = document.getElementById('result');
+  const restartButton = document.getElementById('restart-button');
 
   // ページの読み込みが完了したらクイズ情報を取得する
   window.addEventListener('load', (event) => {
@@ -46,7 +46,15 @@ const restartButton = document.getElementById('restart-button');
   //   - 無し
   // - 戻り値
   //   - 無し
-  const fetchQuizData =() =>{
+  const fetchQuizData = () => {
+    questionElement.textContent = 'Now loading...';
+    resultElement.textContent = '';
+    restartButton.hidden = true;
+    fetch(API_URL)
+      .then(response => response.json())
+      .then(data => {
+        makeQuiz(data.results);
+      });
   };
 
   // setNextQuiz関数を実装する
@@ -97,7 +105,8 @@ const restartButton = document.getElementById('restart-button');
   //   - オブジェクト(クイズデータ1件)
   // - 戻り値無し
   //   - 無し
-
+  const makeQuiz = (quiz) => {
+  };
 
   // quizオブジェクトの中にあるcorrect_answer, incorrect_answersを結合して
   // 正解・不正解の解答をシャッフルする。
