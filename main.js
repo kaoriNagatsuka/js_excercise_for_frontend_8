@@ -19,7 +19,9 @@
 
 
   // ページの読み込みが完了したらクイズ情報を取得する
-
+  window.addEventListener('load', (event) => {
+    fetchQuizData();
+  });
 
   // 「Restart」ボタンをクリックしたら再度クイズデータを取得する
 
@@ -42,7 +44,8 @@
   //   - 無し
   // - 戻り値
   //   - 無し
-
+  const fetchQuizData =() =>{
+  };
 
   // setNextQuiz関数を実装する
   // - 実現したいこと
