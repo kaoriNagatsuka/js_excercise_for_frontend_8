@@ -59,7 +59,7 @@
       .then(response => response.json())
       .then(data => {
         gameState.quizzes = data.results;
-        let quiz = gameState.quizzes[currentIndex];
+        const quiz = gameState.quizzes[currentIndex];
         makeQuiz(quiz);
       });
   };
