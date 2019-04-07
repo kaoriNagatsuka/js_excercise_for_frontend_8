@@ -119,28 +119,6 @@
   // - 戻り値無し
   //   - 無し
   const makeQuiz = (quiz) => {
-    questionElement.textContent = quiz.question;
-    const answers = shuffleAnswers(quiz);
-    answers.forEach(answer => {
-      const answerElement = document.createElement('li');
-      answerElement.textContent = answer;
-      answerContainer.appendChild(answerElement);
-
-      answerElement.addEventListener('click', (event) => {
-        if (event.target.textContent === quiz.correct_answer) {
-          gameState.numberOfCorrects++;
-          alert('Correct answer!!');
-        } else {
-          alert(`Wrong answer... (The correct answer is "${quiz.correct_answer})"`);
-        }
-        gameState.currentIndex++;
-        if (gameState.currentIndex !== gameState.quizzes.length) {
-          setNextQuiz(gameState.quizzes[gameState.currentIndex]);
-        } else {
-          finishQuiz();
-        }
-      });
-    });
   };
 
   // quizオブジェクトの中にあるcorrect_answer, incorrect_answersを結合して
