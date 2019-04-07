@@ -59,7 +59,7 @@
       .then(response => response.json())
       .then(data => {
         gameState.quizzes = data.results;
-        const quiz = gameState.quizzes[currentIndex];
+        const quiz = gameState.quizzes[gameState.currentIndex];
         makeQuiz(quiz);
       });
   };
@@ -113,7 +113,6 @@
   // - 戻り値無し
   //   - 無し
   const makeQuiz = (quiz) => {
-    
   };
 
   // quizオブジェクトの中にあるcorrect_answer, incorrect_answersを結合して
