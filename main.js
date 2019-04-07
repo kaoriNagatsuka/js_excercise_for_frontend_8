@@ -59,7 +59,7 @@
       .then(response => response.json())
       .then(data => {
         gameState.quizzes = data.results;
-        const quiz = gameState.quizzes[currentIndex];
+        const quiz = gameState.quizzes[gameState.currentIndex];
         makeQuiz(quiz);
       });
   };
@@ -76,7 +76,10 @@
   //   - 無し
   // - 戻り値
   //   - 無し
+  const setNextQuiz = (quiz) => {
+    // 後ほど実装します。https://github.com/kaoriNagatsuka/js_excercise_for_frontend_8/issues/6
 
+  };
 
   // finishQuiz関数を実装する
   // - 実現したいこと
@@ -86,7 +89,10 @@
   //   - 無し
   // - 戻り値
   //   - 無し
+  const finishQuiz = () => {
+    // 後ほど実装しますhttps://github.com/kaoriNagatsuka/js_excercise_for_frontend_8/issues/7
 
+  };
 
   // removeAllAnswers関数を実装する
   // - 実現したいこと
@@ -113,12 +119,36 @@
   // - 戻り値無し
   //   - 無し
   const makeQuiz = (quiz) => {
-    
+    questionElement.textContent = quiz.question;
+    const answers = shuffleAnswers(quiz);
+    answers.forEach(answer => {
+      const answerElement = document.createElement('li');
+      answerElement.textContent = answer;
+      answerContainer.appendChild(answerElement);
+
+      answerElement.addEventListener('click', (event) => {
+        if (event.target.textContent === quiz.correct_answer) {
+          gameState.numberOfCorrects++;
+          alert('Correct answer!!');
+        } else {
+          alert(`Wrong answer... (The correct answer is "${quiz.correct_answer})"`);
+        }
+        gameState.currentIndex++;
+        if (gameState.currentIndex !== gameState.quizzes.length) {
+          setNextQuiz(gameState.quizzes[gameState.currentIndex]);
+        } else {
+          finishQuiz();
+        }
+      });
+    });
   };
 
   // quizオブジェクトの中にあるcorrect_answer, incorrect_answersを結合して
   // 正解・不正解の解答をシャッフルする。
-
+  const shuffleAnswers = (quiz) => {
+    const answersArray = [...quiz.incorrect_answers, quiz.correct_answer];
+    return shuffle(answersArray);
+  };
 
   // `shuffle関数` を実装する
   // - 実現したいこと
@@ -130,6 +160,9 @@
   //   - array : 配列
   // - 戻り値
   //   - shffuledArray : シャッフル後の配列(引数の配列とは別の配列であることに注意する)
+  const shuffle = (array) => {
+    // 後ほど実装します。https://github.com/kaoriNagatsuka/js_excercise_for_frontend_8/issues/11
+  };
 
 
 
