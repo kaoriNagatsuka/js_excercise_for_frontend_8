@@ -75,7 +75,7 @@
   //   - 無し
   // - 戻り値
   //   - 無し
-  const setNextQuiz = (quiz) => {
+  const setNextQuiz = () => {
     // 後ほど実装します。https://github.com/kaoriNagatsuka/js_excercise_for_frontend_8/issues/6
   };
 
@@ -132,8 +132,8 @@
           alert(`Wrong answer... (The correct answer is "${quiz.correct_answer})"`);
         }
         gameState.currentIndex++;
-        if (gameState.currentIndex !== gameState.quizzes.length) {
-          setNextQuiz(gameState.quizzes[gameState.currentIndex]);
+        if (gameState.currentIndex < gameState.quizzes.length) {
+          setNextQuiz();
         } else {
           finishQuiz();
         }
