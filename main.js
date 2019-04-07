@@ -19,7 +19,6 @@
     numberOfCorrects: 0
   };
 
-
   // HTMLのid値がセットされているDOMを取得する
   const questionElement = document.getElementById('question');
   const answerContainer = document.getElementById('answers');
