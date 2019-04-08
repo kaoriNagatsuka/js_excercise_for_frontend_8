@@ -77,6 +77,7 @@
   //   - 無し
   const setNextQuiz = () => {
     // 後ほど実装します。https://github.com/kaoriNagatsuka/js_excercise_for_frontend_8/issues/6
+
   };
 
   // finishQuiz関数を実装する
@@ -159,8 +160,14 @@
   // - 戻り値
   //   - shffuledArray : シャッフル後の配列(引数の配列とは別の配列であることに注意する)
   const shuffle = (array) => {
-    // 後ほど実装します。https://github.com/kaoriNagatsuka/js_excercise_for_frontend_8/issues/11
-    return array;
+    const shuffleArray = array.slice();
+    console.log(shuffleArray);
+    for (let i = shuffleArray.length - 1; i >= 0; i--) {
+      let rand = Math.floor(Math.random() * (i + 1));
+      [shuffleArray[i], shuffleArray[rand]] = [shuffleArray[rand], shuffleArray[i]];
+    }
+    console.log(shuffleArray);
+    return shuffleArray;
   };
 
 
