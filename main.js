@@ -162,7 +162,7 @@
   const shuffle = (array) => {
     const copiedArray = array.slice();
     for (let i = copiedArray.length - 1; i >= 0; i--) {
-      let rand = Math.floor(Math.random() * (i + 1));
+      const rand = Math.floor(Math.random() * (i + 1));
       [copiedArray[i], copiedArray[rand]] = [copiedArray[rand], copiedArray[i]];
     }
     return copiedArray;
