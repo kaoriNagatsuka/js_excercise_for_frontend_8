@@ -75,9 +75,8 @@
   //   - 無し
   // - 戻り値
   //   - 無し
-  const setNextQuiz = (quiz) => {
+  const setNextQuiz = () => {
     // 後ほど実装します。https://github.com/kaoriNagatsuka/js_excercise_for_frontend_8/issues/6
-
   };
 
   // finishQuiz関数を実装する
@@ -118,6 +117,28 @@
   // - 戻り値無し
   //   - 無し
   const makeQuiz = (quiz) => {
+    questionElement.textContent = quiz.question;
+    const answers = shuffleAnswers(quiz);
+    answers.forEach(answer => {
+      const answerElement = document.createElement('li');
+      answerElement.textContent = answer;
+      answerContainer.appendChild(answerElement);
+
+      answerElement.addEventListener('click', (event) => {
+        if (event.target.textContent === quiz.correct_answer) {
+          gameState.numberOfCorrects++;
+          alert('Correct answer!!');
+        } else {
+          alert(`Wrong answer... (The correct answer is "${quiz.correct_answer})"`);
+        }
+        gameState.currentIndex++;
+        if (gameState.currentIndex < gameState.quizzes.length) {
+          setNextQuiz();
+        } else {
+          finishQuiz();
+        }
+      });
+    });
   };
 
   // quizオブジェクトの中にあるcorrect_answer, incorrect_answersを結合して
@@ -139,6 +160,7 @@
   //   - shffuledArray : シャッフル後の配列(引数の配列とは別の配列であることに注意する)
   const shuffle = (array) => {
     // 後ほど実装します。https://github.com/kaoriNagatsuka/js_excercise_for_frontend_8/issues/11
+    return array;
   };
 
 
