@@ -160,17 +160,13 @@
   // - 戻り値
   //   - shffuledArray : シャッフル後の配列(引数の配列とは別の配列であることに注意する)
   const shuffle = (array) => {
-    const shuffleArray = array.slice();
-    console.log(shuffleArray);
-    for (let i = shuffleArray.length - 1; i >= 0; i--) {
+    const copiedArray = array.slice();
+    for (let i = copiedArray.length - 1; i >= 0; i--) {
       let rand = Math.floor(Math.random() * (i + 1));
-      [shuffleArray[i], shuffleArray[rand]] = [shuffleArray[rand], shuffleArray[i]];
+      [copiedArray[i], copiedArray[rand]] = [copiedArray[rand], copiedArray[i]];
     }
-    console.log(shuffleArray);
-    return shuffleArray;
+    return copiedArray;
   };
-
-
 
   // unescapeHTML関数を実装する
   // - 実現したいこと
