@@ -76,7 +76,6 @@
   // - 戻り値
   //   - 無し
   const setNextQuiz = () => {
-    // 後ほど実装します。https://github.com/kaoriNagatsuka/js_excercise_for_frontend_8/issues/6
     questionElement.textContent = "";
     while (answerContainer.firstChild) {
       answerContainer.removeChild(answerContainer.firstChild);
