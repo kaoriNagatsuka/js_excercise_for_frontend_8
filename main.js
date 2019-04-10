@@ -77,7 +77,12 @@
   //   - 無し
   const setNextQuiz = () => {
     // 後ほど実装します。https://github.com/kaoriNagatsuka/js_excercise_for_frontend_8/issues/6
-
+    questionElement.textContent = "";
+    while (answerContainer.firstChild) {
+      answerContainer.removeChild(answerContainer.firstChild);
+    }
+    const quiz = gameState.quizzes[gameState.currentIndex];
+    makeQuiz(quiz);
   };
 
   // finishQuiz関数を実装する
@@ -90,7 +95,6 @@
   //   - 無し
   const finishQuiz = () => {
     // 後ほど実装しますhttps://github.com/kaoriNagatsuka/js_excercise_for_frontend_8/issues/7
-
   };
 
   // removeAllAnswers関数を実装する
@@ -100,6 +104,9 @@
   //   - 無し
   // - 戻り値
   //   - 無し
+  const removeAllAnswers = () => {
+    // 後ほど実装します https://github.com/kaoriNagatsuka/js_excercise_for_frontend_8/issues/8
+  };
 
 
   // makeQuiz関数を実装する
