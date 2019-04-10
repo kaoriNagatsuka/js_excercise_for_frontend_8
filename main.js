@@ -77,6 +77,7 @@
   //   - 無し
   const setNextQuiz = () => {
     // 後ほど実装します。https://github.com/kaoriNagatsuka/js_excercise_for_frontend_8/issues/6
+
   };
 
   // finishQuiz関数を実装する
@@ -159,11 +160,13 @@
   // - 戻り値
   //   - shffuledArray : シャッフル後の配列(引数の配列とは別の配列であることに注意する)
   const shuffle = (array) => {
-    // 後ほど実装します。https://github.com/kaoriNagatsuka/js_excercise_for_frontend_8/issues/11
-    return array;
+    const copiedArray = array.slice();
+    for (let i = copiedArray.length - 1; i >= 0; i--) {
+      const rand = Math.floor(Math.random() * (i + 1));
+      [copiedArray[i], copiedArray[rand]] = [copiedArray[rand], copiedArray[i]];
+    }
+    return copiedArray;
   };
-
-
 
   // unescapeHTML関数を実装する
   // - 実現したいこと
