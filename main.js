@@ -58,7 +58,6 @@
       .then(response => response.json())
       .then(data => {
         gameState.quizzes = data.results;
-        // CHANGED:処理の重複を避ける為、setNextQuiz()(85行目)を利用
         setNextQuiz();
       });
   };
@@ -77,7 +76,6 @@
   //   - 無し
   const setNextQuiz = () => {
     questionElement.textContent = "";
-    // CHANGED: removeAllAnswersを実装した為、削除する処理の仕方を変更
     removeAllAnswers();
     const quiz = gameState.quizzes[gameState.currentIndex];
     makeQuiz(quiz);
