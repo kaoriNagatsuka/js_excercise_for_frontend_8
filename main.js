@@ -58,8 +58,7 @@
       .then(response => response.json())
       .then(data => {
         gameState.quizzes = data.results;
-        const quiz = gameState.quizzes[gameState.currentIndex];
-        makeQuiz(quiz);
+        setNextQuiz();
       });
   };
 
@@ -76,8 +75,10 @@
   // - 戻り値
   //   - 無し
   const setNextQuiz = () => {
-    // 後ほど実装します。https://github.com/kaoriNagatsuka/js_excercise_for_frontend_8/issues/6
-
+    questionElement.textContent = "";
+    removeAllAnswers();
+    const quiz = gameState.quizzes[gameState.currentIndex];
+    makeQuiz(quiz);
   };
 
   // finishQuiz関数を実装する
@@ -90,7 +91,6 @@
   //   - 無し
   const finishQuiz = () => {
     // 後ほど実装しますhttps://github.com/kaoriNagatsuka/js_excercise_for_frontend_8/issues/7
-
   };
 
   // removeAllAnswers関数を実装する
@@ -100,6 +100,11 @@
   //   - 無し
   // - 戻り値
   //   - 無し
+  const removeAllAnswers = () => {
+    while (answerContainer.firstChild) {
+      answerContainer.removeChild(answerContainer.firstChild);
+    }
+  };
 
 
   // makeQuiz関数を実装する
@@ -130,7 +135,7 @@
           gameState.numberOfCorrects++;
           alert('Correct answer!!');
         } else {
-          alert(`Wrong answer... (The correct answer is "${quiz.correct_answer})"`);
+          alert(`Wrong answer... (The correct answer is "${quiz.correct_answer}")`);
         }
         gameState.currentIndex++;
         if (gameState.currentIndex < gameState.quizzes.length) {
