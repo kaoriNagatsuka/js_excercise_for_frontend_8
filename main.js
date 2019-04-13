@@ -130,19 +130,19 @@
   // - 戻り値無し
   //   - 無し
   const makeQuiz = (quiz) => {
-    questionElement.textContent = quiz.question;
+    questionElement.textContent = unescapeHTML(quiz.question);
     const answers = shuffleAnswers(quiz);
     answers.forEach(answer => {
       const answerElement = document.createElement('li');
-      answerElement.textContent = answer;
+      answerElement.textContent = unescapeHTML(answer);
       answerContainer.appendChild(answerElement);
 
       answerElement.addEventListener('click', (event) => {
-        if (event.target.textContent === quiz.correct_answer) {
+        if (event.target.textContent === unescapeHTML(quiz.correct_answer)) {
           gameState.numberOfCorrects++;
           alert('Correct answer!!');
         } else {
-          alert(`Wrong answer... (The correct answer is "${quiz.correct_answer}")`);
+          alert(`Wrong answer... (The correct answer is "${unescapeHTML(quiz.correct_answer)}")`);
         }
         gameState.currentIndex++;
         setNextQuiz();
@@ -185,5 +185,13 @@
   //   - 文字列
   // - 戻り値
   //   - 文字列
-
+  const unescapeHTML = (str) => {
+    const div = document.createElement('div');
+    div.innerHTML = str.replace(/</g, "&lt")
+                       .replace(/>/g, "&gt")
+                       .replace(/ /g, "&nbsp")
+                       .replace(/\r/g, "&#13")
+                       .replace(/\n/g, "&#10");
+    return div.textContent || div.innerText;
+  };
 })();
